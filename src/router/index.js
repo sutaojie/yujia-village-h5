@@ -332,19 +332,19 @@ const router = new Router({
           header_name: 'yoga-message',
           keepAlive: true 
         },
-        component: () => import('@/pages/informationPage/yogaMessage.vue')
+        component: () => import('@/pages/informationpage/yogaMessage.vue')
       }]
     },
     {
       path: '/message-detail/:id',
       name: 'message-detail',
-      component: () => import('@/pages/informationPage/messageDetail.vue')
+      component: () => import('@/pages/informationpage/messageDetail.vue')
     },
     {
       // 课程订单页面
       path: '/pay-order',
       name: 'pay-order',
-      component: () => import('@/pages/informationPage/payorder')
+      component: () => import('@/pages/informationpage/payorder')
     },
     {
       path: '/fill-order',
