@@ -199,7 +199,6 @@ export default {
   beforeRouteLeave (to, from, next) {
     const changeKeepAlive = (parentName, name, keepAlive) => {
       this.$router.options.routes.map((item) => {
-        // console.log(item);
         if(item && item.children) {
           item.children.map(sub_item => {
             if (sub_item.name === parentName || sub_item.name === name) {

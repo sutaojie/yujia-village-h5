@@ -247,8 +247,6 @@ export default {
   methods: {
     // 展示积分选择 
     showJifen(index) {
-      console.log(this.goods_integral);
-      
       this.show = true;
       if(this.goods_id!==index) {
         this.radio = 0;

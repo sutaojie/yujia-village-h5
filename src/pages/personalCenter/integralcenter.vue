@@ -68,7 +68,6 @@ export default {
         },
         getIncomeRecord(page = 1) {
             this.$request.get('/personal/fractioRecord/7?page='+page).then(data => {
-                // console.log(data);
                 const incomeRecord = data.in.data;
                 incomeRecord.forEach(item => {
                     this.incomeRecord.push(item);
@@ -78,7 +77,6 @@ export default {
         },
         getSpendingRecord(page = 1) {
             this.$request.get('/personal/fractioRecord/7?page='+page).then(data => {
-                // console.log(data);
                 const spendingRecord = data.out.data;
                 spendingRecord.forEach(item => {
                     this.spendingRecord.push(item);

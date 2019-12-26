@@ -43,7 +43,6 @@ export default {
         },
         // 保存时的 操作
         onSave(content) {
-            // console.log(content);
             this.userInfoForm.userName = content.name;
             this.userInfoForm.userTel = content.tel;
             this.userInfoForm.province = content.province;
@@ -83,7 +82,6 @@ export default {
                 } else {
                     isDefault = false
                 }
-                console.log(data);
                 const info = {
                     name: data.name,
                     tel: data.tel,

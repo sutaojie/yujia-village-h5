@@ -309,7 +309,6 @@ export default {
         },
         // 图片上传之后的 回掉函数
         afterRead(fileInfo, name) {
-            console.log(fileInfo,name);
             let that = this;
             if(fileInfo.length == 2) {
                 
@@ -327,8 +326,6 @@ export default {
                 })
             } else {
                 lrz(fileInfo.file).then(rst => {
-                // console.log(rst.file); 压缩之后的 文件信息
-                // console.log(rst.base64); 压缩之后的 base64
                     if(that.title==='认证机构负责人') {
                         that.ownerDataList.img_work = rst.base64
                     } else if (that.title==='认证教练') {
@@ -348,7 +345,6 @@ export default {
         },
         // 删除上传图片
         onDel(fileInfo,detail) {
-            // console.log(fileInfo, detail);
             if(this.title==='认证机构负责人') {
                 this.ownerDataList.img_work = ''
             } else if(this.title==='认证教练') {
@@ -394,7 +390,6 @@ export default {
                     }  
                 } else if(this.title==='认证导师') {
                     this.ownerAndCoachList.identity_auth = 7;
-                    console.log(this.ownerAndCoachList);
                     let status = this.formVerify(this.ownerAndCoachList, this.fileList3);
                     if(status === -1) {
                         return
@@ -448,7 +443,6 @@ export default {
         // 认证
         identityVerify(submitList) {
             this.$request.post('/personal/home',submitList).then(data => {
-                console.log(data);
                 if(data.msg == 'OK') {
                     this.$toast('资料已上传，请耐心等候...');
                     this.isDisabled = true;

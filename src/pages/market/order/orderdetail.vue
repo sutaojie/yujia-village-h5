@@ -135,7 +135,6 @@ export default {
           }
         })
       }).catch(() => {
-        console.log('否');
       });
       
     },

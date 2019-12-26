@@ -744,9 +744,8 @@ export default {
     },
 
     // 积分显示
-     getPersonalData() {
+    getPersonalData() {
       this.$request.get('/personal/home').then(data => {
-          // console.log(data);
           store.dispatch("INFO", data);
           sessionStorage.setItem('user data',JSON.stringify(data));
           const { fraction, icon, name, identity_auth, reason,cashCount,couponCount } = data.user;

@@ -148,7 +148,6 @@ export default {
     methods: {
         getPersonalData() {
             this.$request.get('/personal/home').then(data => {
-                // console.log(data);
                 store.dispatch("INFO", data);
                 sessionStorage.setItem('user data',JSON.stringify(data));
                 const { fraction, icon, name, identity_auth, reason,cashCount,couponCount } = data.user;
@@ -207,7 +206,6 @@ export default {
             this.show = true;
         },
         logout() {
-            // console.log('退出');
             store.dispatch("INFO", { user: {} });
             window.sessionStorage.clear();
             // 退出回到首页

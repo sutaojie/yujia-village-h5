@@ -103,7 +103,6 @@ export default {
                arr.forEach(item => {
                   this.logisticsInfo.unshift(item);
                })
-               console.log(this.logisticsInfo);
             })
        }
     }

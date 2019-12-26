@@ -108,7 +108,6 @@ export default {
                     verification_key: this.tel_key,
                     verification_code: this.sms
                 }
-                // console.log(this.updateTel);
                 this.postUpdateTel(this.updateTel);
             }
             
@@ -116,7 +115,6 @@ export default {
         // 输入验证码
         onInput(key) {
             this.value = (this.value + key).slice(0, 4);
-            // console.log(this.value);
         },
         // 删除验证码
         onDelete() {
@@ -150,9 +148,7 @@ export default {
             }
             if(this.value !== '') {
                 this.$request.post("/verificationCode",this.verifyData).then(data => {
-                    // console.log(data);
                     if(data.msg === 'OK') {
-                        console.log('success');
                         if(rightText === '下一步') {
                             this.getNoteCode(this.currentNumber);
                             this.isDisabled = true; 
@@ -177,7 +173,6 @@ export default {
                 key: this.verificationCode.key
             }
             this.$request.post("/getVerificationCode",this.noteVerifyData).then(data => {
-                // console.log(data);
                 this.tel_key = data.key;
             })
         },
@@ -195,7 +190,6 @@ export default {
         // 更改手机号
         postUpdateTel(updateTel) {
             this.$request.post('/personal/updateTel', updateTel ).then(data => {
-                // console.log(data);
                 if(data.msg === 'OK') {
                     this.$toast.success('手机号码修改成功');
                 }

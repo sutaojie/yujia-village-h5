@@ -211,32 +211,14 @@ export default {
         };
         jsonp(res.openid).then(res => {
         });
-        // setTimeout(() =>{
-        //     console.log(script.innerHTML)
-        // }, 3000)
-        // let routeData = this.$router.resolve({ path: 'payforwx', query: { htmls: res.openid }});
-        // window.open(routeData.href, '_blank')
-
-        // this.$request.get('/alipay/wechat/jsapi/test?out_trade_no=' + orderId +'&openid='+ res.openid ).then((res) => {
-        //     console.log(res)
-        //     // let routeData = this.$router.resolve({ path: 'payforwx', query: { htmls: res.mweb_url }});
-        //     // window.open(routeData.href, '_blank')
-        // })
       });
       return;
-      // this.$request.get('/alipay/wechat/jsapi/test?out_trade_no=' + orderId ).then((res) => {
-      //     let routeData = this.$router.resolve({ path: 'payforwx', query: { htmls: res.mweb_url }});
-      //     window.open(routeData.href, '_blank')
-      // })
     },
     // 外部浏览器微信支付
     payForWexinw(orderId) {
       this.$request
         .get("/alipay/wechat/h/test?out_trade_no=" + orderId)
         .then(res => {
-          // const { mweb_url } = res
-          // console.log(mweb_url);
-          // window.open(mweb_url, "_blank");
           let routeData = this.$router.resolve({
             path: "payforwx",
             query: { htmls: res.mweb_url, body: res.body, id: res.out_trade_no }

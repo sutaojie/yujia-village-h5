@@ -32,7 +32,6 @@ export default {
     this.body = this.$route.query.body || ''
     this.hes = this.$route.query.htmls;
     this.id = this.$route.query.id || ''
-    console.log(this.body, this.hes, this.id)
   },
   methods: {
     goback () {

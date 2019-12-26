@@ -350,25 +350,10 @@ const router = new Router({
       path: '/fillorder',
       name: 'fillorder',
       component: () => import('@/pages/market/fillOrder.vue')
-    },
-    {
-      path: '/demo',
-      name: 'demo',
-      component: () => import('@/pages/demo/index.vue')
-    },
+    }
   ]
 })
 
-// router.beforeEach((to, from, next) => {
-//   // 进入是详情，且从首页过来的，才缓存
-//   console.log(from.path.match('list'));
-//   if (from.path.match('list') || (to.path.match('detail') && from.path.match('store/category'))||(to.path.match('teacherDetails') && from.path.match('teacherClub/list'))){
-//     from.meta.keepAlive = true
-//   } else {
-//     from.meta.keepAlive = false
-//   }
-//   next()
-// })
 router.beforeEach((to, from, next) => {
   document.body.scrollTop = 0
   document.documentElement.scrollTop = 0

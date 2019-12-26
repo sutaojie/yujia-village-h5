@@ -157,7 +157,6 @@ export default {
         // 获取 我成功邀请的用户信息
         myShare(page = 1) {
             this.$request.get('/personal/myShare?page=' + page).then(data => {
-                console.log(data);
                 this.userInfo = this.dealingData( data.data, this.userInfo);
                 this.total = data.total;
             })

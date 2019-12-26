@@ -93,7 +93,6 @@ export default {
         },
         getBuyCourse() {
             this.$request.get('/get/train/order').then(res => {
-                console.log(res);
                 this.courseOrderAll = res.all;
                 this.courseOrderSuccess = res.success;
                 this.courseOrderWaitpay = res.waitpay;
@@ -105,7 +104,6 @@ export default {
         },
         // 支付
         payMoney(orderId) {
-            console.log(orderId);
             this.$request.get('/alipay/wappay/get?out_trade_no='+orderId).then(res => {
                 this.form = res;
                 this.$nextTick(() => {

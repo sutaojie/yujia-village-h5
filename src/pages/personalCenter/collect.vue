@@ -118,7 +118,6 @@ export default {
         // 获取收藏商品的数据
         getCollectGoods(page = 1) {
             this.$request.get('/userCollect/create/6?page=' + page).then(data => {
-                console.log(data);
                 const collectGoods = data.data;
                 collectGoods.forEach(item => {
                     this.goodsList.push(item);
@@ -129,7 +128,6 @@ export default {
         // 获取收藏(我想学)的课程数据
         getCollectCourse(page = 1) {
             this.$request.get('/personal/myFollowTrain/5?page=' + page).then(data => {
-                // console.log(data);
                 const collectCourse = data.data;
                 collectCourse.forEach(item => {
                     item.startTime = item.startTime.replace(/-/g,'.');

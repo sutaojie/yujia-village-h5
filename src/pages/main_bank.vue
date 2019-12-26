@@ -177,7 +177,6 @@ export default {
         },
         getHomeData() {
             this.$request.get('/home').then(data => {
-                console.log(data);
                 const { hot, information, teachers, clubs} = data;
                 this.hotCourse = hot;
                 this.yogaNews = information;
@@ -187,8 +186,7 @@ export default {
                 this.$nextTick(function() {
                     this.swiperInit();
                 })
-            }).catch(error => {
-                console.log(error);
+            }).catch(() => {
             })
         },
         more(keyword) {

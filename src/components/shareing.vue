@@ -83,9 +83,8 @@ export default {
     },
     shareMessage () {
       this.check();
-      // console.log()
       if(!JSON.parse(sessionStorage.getItem("user")) &&
-       (this.type == 'good'  || this.type === "train")
+        (this.type == 'good'  || this.type === "train")
       ) {
         this.$router.push('/login')
         this.$toast('请登录')

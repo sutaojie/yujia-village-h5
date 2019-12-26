@@ -126,7 +126,6 @@ export default {
         // 获取购物袋数据
         getShoppingBag() {
             this.$request.get('/userCart/create').then(data => {
-                // console.log(data);
                 data.forEach(item => {
                     const cart = {
                         id: item.id,

@@ -71,8 +71,7 @@ export default {
   },
   methods: {
     // 长按
-    handleLongTouch(el) {
-      console.log(el)
+    handleLongTouch() {
     },
     getGoodsInfo() {
       const { goodsId } = this.$route.query;

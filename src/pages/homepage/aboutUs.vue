@@ -100,14 +100,12 @@ export default {
     created(){
       this.listhomedata();
   },
-   methods:{
+  methods:{
         onClickLeft() {
             this.$router.go(-1);
         },
         listhomedata(){
         this.$request.get("/aboutUs").then(res => {
-            console.log(res);
-            
             this.aboutUs = res;
             this.aboutusmodel = res.about_us_model;
         })

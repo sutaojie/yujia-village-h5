@@ -102,7 +102,6 @@ export default {
             this.$router.go(-1);
         },
         onClickRight() {
-            console.log(this.personalData); 
             if(this.personalData.name === '') {
                 this.$toast({
                     message: '请填写用户名',
@@ -110,7 +109,6 @@ export default {
                 return
             }
             this.$request.post('/personal/updateInfo',this.personalData).then(data => {
-                console.log(data);
                 if(data.msg === '保存成功,完善全部资料可获得积分哦') {
                     this.$toast({
                         message: '保存成功,完善全部资料可获得积分哦',
@@ -120,12 +118,9 @@ export default {
         },
         // 图片上传完毕后的回调函数
         afterRead(fileInfo) {
-            // console.log(fileInfo);
             this.img_url = fileInfo.content;
             let that = this;
             lrz(fileInfo.file).then(rst => {
-                // console.log(rst.file); 压缩之后的 文件信息
-                // console.log(rst.base64); 压缩之后的 base64
                 that.personalData.icon = rst.base64
             })
             .catch(function (err) {

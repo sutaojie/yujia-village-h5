@@ -52,7 +52,6 @@ export default {
     },
     getOrderStatus(orderId) {
       this.$request.post('/getOrderStatus', { out_trade_no: orderId }).then(res => {
-        console.log(res);
         this.msg = res.msg
         if( res.msg == '支付成功' ) this.ordermsg = '感谢您的光顾，宝贝一定准时送到府上！';
         else if (res.msg == '支付失败') this.ordermsg = '失败了！请重新购买';
