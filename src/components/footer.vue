@@ -10,6 +10,8 @@
     </div>
 </template>
 <script>
+/* eslint-disable no-undef */
+
 import { mapGetters } from 'vuex'
 export default {
     name: 'Footer',
@@ -31,7 +33,7 @@ export default {
                 },
                 {
                     title: '培训信息',
-                    name: 'yogamessage',
+                    name: 'yoga-message',
                     normal: require('../assets/img/information-normal.png'),
                     active: require('../assets/img/information-active.png')
                 },

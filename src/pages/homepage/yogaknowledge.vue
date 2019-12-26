@@ -80,7 +80,7 @@ export default {
           },
           gotoPage(type) {
           const path = {
-            train: '/yogamessage/list',
+            train: '/yoga-message/list',
             information: '/yoga-knowledge',
             teacher: '/teacher-club/list?current=1',
             club: '/teacher-club/list?current=0',

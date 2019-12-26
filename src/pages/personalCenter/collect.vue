@@ -57,7 +57,7 @@
         <van-popup class="tel-advisory" v-model="show">
             <div class="hint">资讯课程，请拨打以下电话</div>
             <div class="phone-img"></div>
-            <div class="hot-line">客服电话　400-100-7191</div>
+            <div class="hot-line">客服电话 400-100-7191</div>
         </van-popup>
     </div>
 </template>

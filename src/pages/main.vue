@@ -158,6 +158,7 @@
   </div>
 </template>
 <script>
+/* eslint-disable no-undef */
 import Vue from 'vue';
 import { mapGetters } from "vuex";
 import { getMainDetail, goAdvertingApi } from '@/services/api/main.js'
@@ -218,7 +219,7 @@ export default {
     },
     gotoPage(type) {
       const path = {
-        train: '/yogamessage/list',
+        train: '/yoga-message/list',
         yagainformation: '/yaga-information',
         yogaknowledge: '/yoga-knowledge',
         aboutUs: '/about-us',

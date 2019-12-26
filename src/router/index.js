@@ -320,16 +320,16 @@ const router = new Router({
       component: () => import('@/pages/homepage/knowledgeDetail')
     },
     {
-      path: '/yogamessage',
+      path: '/yoga-message',
       component: Home,
       redirect: {
-        name: 'yogamessage list'
+        name: 'yoga-message list'
       },
       children: [{
         path: 'list',
-        name: 'yogamessage list',
+        name: 'yoga-message list',
         meta: {
-          header_name: 'yogamessage',
+          header_name: 'yoga-message',
           keepAlive: true 
         },
         component: () => import('@/pages/informationPage/yogaMessage.vue')

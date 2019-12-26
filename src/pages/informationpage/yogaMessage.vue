@@ -209,9 +209,9 @@ export default {
       })
     }
     if (to.name === 'message-detail') {
-      changeKeepAlive('', 'yogamessage list', true)
+      changeKeepAlive('', 'yoga-message list', true)
     } else {
-      changeKeepAlive('', 'yogamessage list', false)
+      changeKeepAlive('', 'yoga-message list', false)
       sessionStorage.setItem('scrollTop', 0)
     }
     next()

@@ -242,6 +242,7 @@ export default {
         },
         // 输入款失去焦点时，校验
         onBlur() {
+            // eslint-disable-next-line no-useless-escape
             const name = /^([\u4e00-\u9fa5]{2,16}|[\u4E00-\u9FA5\·]{2,16}|[a-zA-Z.·\s]{2,16})$/;
             const hallName =  /^[\u4e00-\u9fa5a-zA-Z0-9]{2,16}$/;
             const tel = /(^1[3|4|5|6|7|8|9]\d{9}$)|(^09\d{8}$)/;
@@ -308,6 +309,7 @@ export default {
             this.show = false;
         },
         // 图片上传之后的 回掉函数
+        // eslint-disable-next-line no-unused-vars
         afterRead(fileInfo, name) {
             let that = this;
             if(fileInfo.length == 2) {
@@ -359,7 +361,7 @@ export default {
             
         },
         // 文件超过限制大小 
-        overSize(file) {
+        overSize() {
             this.$toast({
                 message: '图片大小不能超过4M',
             });

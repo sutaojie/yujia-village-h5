@@ -108,6 +108,8 @@
 </template>
 
 <script>
+/* eslint-disable no-undef */
+
 import shareIng from '../../components/shareing'
 import { getFollowTrain } from '@/services/api/personal'
 import { mapGetters } from "vuex";
@@ -150,7 +152,7 @@ export default {
   },
   beforeRouteLeave  (to, from, next) {
     if(to.path === this.$route.path || to.path == '') {
-        this.$router.replace('/yogamessage/list')
+        this.$router.replace('/yoga-message/list')
     }
     next()
   },
@@ -171,12 +173,13 @@ export default {
     },
     goback () {
       this.$router.go(-1)
-      // this.$router.replace('/yogamessage/list')
+      // this.$router.replace('/yoga-message/list')
     },
     getmessageDetail(id) {
       this.$request.get('trains/' + id).then((res) => {
         this.detailData = res.train;
         this.train_discount = res.train_discount;
+        // eslint-disable-next-line no-useless-escape
         this.time = this.detailData.startTime.replace(/\-/g, '\.')+'-'+this.detailData.startTime.replace(/\-/g, '\.');
         this.intro = this.detailData.intro.replace(/\r\n/g,'<br />');
         this.outline = this.detailData.outline.replace(/\r\n/g,'<br />');

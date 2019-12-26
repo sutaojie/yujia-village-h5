@@ -10,7 +10,7 @@ export function goAdvertingApi (mold, relation_id) {
   else if(mold === 3) {vm.$router.push(`teacher-club/teacher-details?id=${relation_id}`)}
   else if(mold === 4) { vm.$router.push(`/message-detail/${relation_id}`) }
   // else if(mold === 5) { vm.$router.push(`/goods/detail/${relation_id}`) }
-  else if(mold === 6) { vm.$router.push(`/yogamessage/list/?id=${relation_id}`)} // 
+  else if(mold === 6) { vm.$router.push(`/yoga-message/list/?id=${relation_id}`)} // 
   // else if(mold === 7) { 商品分类 }
   else if(mold === 1) { vm.$router.push(`/advertisement?id=${relation_id}`) }
 }

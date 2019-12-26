@@ -265,7 +265,7 @@ export default {
       else if(mold === 3) {this.$router.push(`teacher-club/teacher-details?id=${relation_id}`)}
       else if(mold === 4) { this.$router.push(`/message-detail/${relation_id}`) }
       // else if(mold === 5) { this.$router.push(`/goods/detail/${relation_id}`) }
-      else if(mold === 6) { this.$router.push(`/yogamessage/list`) }
+      else if(mold === 6) { this.$router.push(`/yoga-message/list`) }
       // else if(mold === 7) { 商品分类 }
       else if(mold === 1) { this.$router.push('/advertisement') }
     },
