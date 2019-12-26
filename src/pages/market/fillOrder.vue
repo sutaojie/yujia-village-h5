@@ -126,7 +126,7 @@ import {
   postGoodOrder,
   postGetAlipayCode,
   postDirectGoodOrder
-} from "@/api/order.js";
+} from "@/services/api/order.js";
 export default {
   data() {
     return {

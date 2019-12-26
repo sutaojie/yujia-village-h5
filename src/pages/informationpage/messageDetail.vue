@@ -108,10 +108,8 @@
 </template>
 
 <script>
-// import Vue from 'vue';
 import shareIng from '../../components/shareing'
-import '../../dist/swiper.css'
-import { getFollowTrain } from '../../../api/personal'
+import { getFollowTrain } from '@/services/api/personal'
 import { mapGetters } from "vuex";
 import { Toast } from 'vant';
 

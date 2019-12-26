@@ -43,7 +43,7 @@
 <script>
 import Vue from 'vue';
 import { Button, Toast } from 'vant';
-import { goAdvertingApi } from '@/api/main'
+import { goAdvertingApi } from '@/services/api/main'
 
 Vue.use(Button).use(Toast);
 export default {

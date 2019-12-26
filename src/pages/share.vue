@@ -51,7 +51,7 @@
   </div>
 </template>
 <script>
-import { getGoodsById } from "@/api/category.js";
+import { getGoodsById } from "@/services/api/category.js";
 import longTouch from '@/utils/longTouch'
 export default {
   name: "share",

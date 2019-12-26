@@ -36,7 +36,7 @@
     </div>
 </template>
 <script>
-import { postUserOrder, deleteUserCartDelCart } from '@/api/goods.js'
+import { postUserOrder, deleteUserCartDelCart } from '@/services/api/goods.js'
 export default {
     data() {
         return {

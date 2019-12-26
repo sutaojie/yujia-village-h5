@@ -160,7 +160,7 @@
 <script>
 import Vue from 'vue';
 import { mapGetters } from "vuex";
-import { getMainDetail, goAdvertingApi } from '@/api/main.js'
+import { getMainDetail, goAdvertingApi } from '@/services/api/main.js'
 import { Swipe, SwipeItem, Overlay } from 'vant';
 import { setInterval } from 'timers';
 Vue.use(Swipe).use(SwipeItem).use(Overlay);

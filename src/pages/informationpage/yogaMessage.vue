@@ -127,14 +127,13 @@
 import Vue from 'vue';
 import areaList from '../market/goods/area_list'
 import { mapGetters } from "vuex"
-import { goAdvertingApi } from '@/api/main'
+import { goAdvertingApi } from '@/services/api/main'
 import { PullRefresh, Toast } from 'vant';
-// import { mapGetters } from "vuex";
 Vue.use(PullRefresh)
 
 import {
   getFollowTrain
-} from "../../../api/personal";
+} from "@/services/api/personal";
 export default {
   data() {
     return {

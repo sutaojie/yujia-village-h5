@@ -1,1 +1,7 @@
+import './amfe-flexible.js'
+import './clipboard.js'
 import './fundebug.js'
+import './qs.js'
+import './share.js'
+import './vant.js'
+import './vconsole.js'

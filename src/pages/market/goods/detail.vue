@@ -145,7 +145,7 @@ import shareIng from '@/components/shareing'
 import { mapGetters } from "vuex";
 import { Area, Popup, Sku, Skeleton, Toast } from "vant";
 import area_list from "./area_list.js";
-import { getGoodsById, getLoginGoodsById, postUserCart } from "@/api/category.js";
+import { getGoodsById, getLoginGoodsById, postUserCart } from "@/services/api/category.js";
 export default {
   components: {
     shareIng,

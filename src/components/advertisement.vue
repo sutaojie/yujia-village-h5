@@ -18,7 +18,7 @@
   </div>
 </template>
 <script>
-import { goAdvertingApi } from '@/api/main.js'
+import { goAdvertingApi } from '@/services/api/main.js'
 export default {
   data() {
     return {

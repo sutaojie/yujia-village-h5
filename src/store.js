@@ -60,11 +60,7 @@ const store = new Vuex.Store({
 
   actions: {
     // 修改个人信息
-    INFO({
-      commit,
-      state
-    }, info) {
-      // console.log(info)
+    INFO({ commit }, info) {
       info ? commit('UPDATE_INFO', info)
       : commit('UPDATE_INFO', {})
     },

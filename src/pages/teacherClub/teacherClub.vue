@@ -150,7 +150,7 @@
 import areaList from "../../assets/js/area";
 import Vue from 'vue';
 import { mapGetters } from "vuex";
-import { goAdvertingApi } from '@/api/main'
+import { goAdvertingApi } from '@/services/api/main'
 import Swiper from 'swiper';
 import { Notify, Toast, Swipe, SwipeItem } from "vant";
 Vue.use(Notify).use(Toast).use(Swipe).use(SwipeItem);
