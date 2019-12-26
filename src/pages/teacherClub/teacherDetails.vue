@@ -121,7 +121,7 @@ export default {
         })
     },
     goback() {
-      this.$router.push('/teacherClub/list')
+      this.$router.push('/teacher-club/list')
     },
     // 点赞
     thumb() {

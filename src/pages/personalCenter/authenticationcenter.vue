@@ -111,7 +111,7 @@ export default {
         },
         goFormSubmit(keyword) {
             this.$router.push({
-                name: 'authenticationForm',
+                name: 'authentication-form',
                 query: {
                     key: keyword
                 }

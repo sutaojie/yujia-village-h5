@@ -61,7 +61,7 @@ export default {
         },
         nextstep(){
             this.$router.push({
-            path: "/messagedetails",
+            path: "/message-details",
          });
         }
     }

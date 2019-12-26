@@ -81,9 +81,9 @@ export default {
           gotoPage(type) {
           const path = {
             train: '/yogamessage/list',
-            information: '/yogaknowledge',
-            teacher: '/teacherClub/list?current=1',
-            club: '/teacherClub/list?current=0',
+            information: '/yoga-knowledge',
+            teacher: '/teacher-club/list?current=1',
+            club: '/teacher-club/list?current=0',
           }
           path[type] && this.$router.push(path[type])
         },
@@ -141,7 +141,7 @@ export default {
         },
         // 跳转到 知识详情页
         goInfoDetail(id) {
-            this.$router.push('/knowledgedetail/'+id);
+            this.$router.push('/knowledge-detail/'+id);
         }
         
     }

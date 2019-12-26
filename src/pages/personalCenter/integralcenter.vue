@@ -64,7 +64,7 @@ export default {
             this.$router.go(-1);
         },
         question() {
-            this.$router.push('/integralrules')
+            this.$router.push('/integral-rules')
         },
         getIncomeRecord(page = 1) {
             this.$request.get('/personal/fractioRecord/7?page='+page).then(data => {

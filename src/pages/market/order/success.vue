@@ -26,7 +26,7 @@ export default {
   },
   // 展示价格为 0 时，支付成功的状态
   beforeRouteEnter: (to, from, next) => {
-    if(from.path === '/fillorder')
+    if(from.path === '/fill-order')
     next(() => {
       this.msg = '支付成功'
     })

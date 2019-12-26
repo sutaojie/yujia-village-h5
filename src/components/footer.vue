@@ -25,7 +25,7 @@ export default {
                 },
                 {
                     title: '名师机构',
-                    name: 'teacherClub',
+                    name: 'teacher-club',
                     normal: require('../assets/img/teacher-normal.png'),
                     active: require('../assets/img/teacher-active.png')
                 },

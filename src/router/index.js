@@ -41,8 +41,8 @@ const router = new Router({
     },
     // 微信支付页面
     {
-      path: '/payforwx',
-      name: 'payforwx',
+      path: '/pay-for-wx',
+      name: 'pay-for-wx',
       component: () => import('@/components/payForwx'),
     },
     // 自定义广告页
@@ -56,16 +56,16 @@ const router = new Router({
       name: 'homepage',
       component: Home,
       children: [{
-        path: '/yogaknowledge',
+        path: '/yoga-knowledge',
         component: () => import('@/pages/homepage/yogaknowledge')
       },
       {
-        path: '/yagainformation',
-        name: 'yagainformation',
+        path: '/yaga-information',
+        name: 'yaga-information',
         component: () => import('@/pages/homepage/yogaInForMation'),
       },
       {
-        path: '/aboutUs',
+        path: '/about-us',
         component: () => import('@/pages/homepage/aboutUs')
       },
       {
@@ -95,7 +95,7 @@ const router = new Router({
     },
     {
       // 个人资料编辑
-      path: '/personaldata',
+      path: '/personal-data',
       component: () => import('@/pages/personalCenter/personaldata')
     },
     {
@@ -105,7 +105,7 @@ const router = new Router({
     },
     {
       // 现金券
-      path: '/cashvoucher',
+      path: '/cash-voucher',
       component: () => import('@/pages/personalCenter/cashvoucher')
     },
     {
@@ -115,17 +115,17 @@ const router = new Router({
     },
     {
       // 消息中心
-      path: '/messagecenter',
+      path: '/message-center',
       component: () => import('@/pages/personalCenter/messagecenter')
     },
     {
       // 消息中心详情
-      path: '/messagedetails',
+      path: '/message-details',
       component: () => import('@/pages/personalCenter/messagedetails')
     },
     {
       // 购物袋
-      path: '/shoppingbag',
+      path: '/shopping-bag',
       component: () => import('@/pages/personalCenter/shoppingbag')
     },
     {
@@ -135,8 +135,8 @@ const router = new Router({
     },
     {
       // 地址编辑
-      path: '/addresscompile',
-      name: 'addresscompile',
+      path: '/address-compile',
+      name: 'address-compile',
       component: () => import('@/pages/personalCenter/addresscompile')
     },
     {
@@ -146,33 +146,33 @@ const router = new Router({
     },
     {
       // 点赞的老师
-      path: '/thumbteacher',
+      path: '/thumb-teacher',
       component: () => import('@/pages/personalCenter/thumbteacher')
     },
     {
       // 购买的课程
-      path: '/buycourse',
+      path: '/buy-course',
       component: () => import('@/pages/personalCenter/buycourse')
     },
     {
       // 认证中心
-      path: '/authenticationcenter',
+      path: '/authentication-center',
       component: () => import('@/pages/personalCenter/authenticationcenter')
     },
     {
       // 认证表单
-      path: 'authenticationForm',
-      name: 'authenticationForm',
+      path: 'authentication-form',
+      name: 'authentication-form',
       component: () => import('@/pages/personalCenter/authenticationForm')
     },
     {
       // 更改手机
-      path: '/changephone',
+      path: '/change-phone',
       component: () => import('@/pages/personalCenter/changephone')
     },
     {
       // 设置联系方式
-      path: '/contactway',
+      path: '/contact-way',
       component: () => import('@/pages/personalCenter/contactWay')
     },
     {
@@ -187,7 +187,7 @@ const router = new Router({
     },
     {
       // 积分规则
-      path: '/integralrules',
+      path: '/integral-rules',
       component: () => import('@/pages/personalCenter/integralrules')
     },
     // 登录
@@ -221,8 +221,8 @@ const router = new Router({
     },
     // 商品搜索
     {
-      path: '/searchgoods',
-      name: 'searchgoods',
+      path: '/search-goods',
+      name: 'search-goods',
       component: () => import('@/pages/market/search')    
     },
     // 商品
@@ -283,40 +283,40 @@ const router = new Router({
     },
     {
       //名师机构
-      path: '/teacherClub',
-      name: 'teacherClub',
+      path: '/teacher-club',
+      name: 'teacher-club',
       component: Home,
       redirect: {
-        name: 'teacherClub list'
+        name: 'teacher-club list'
       },
       children: [{
         path: 'list',
-        name: 'teacherClub list',
+        name: 'teacher-club list',
         meta: {
-          header_name: 'teacherClub',
+          header_name: 'teacher-club',
           keepAlive: true
         },
         component: () => import('@/pages/teacherClub/teacherClub')
       }]
     },
     {
-      path: '/teacherClub/teacherDetails',
-      name: 'teacherDetails',
+      path: '/teacher-club/teacher-details',
+      name: 'teacher-details',
       component: () => import('@/pages/teacherClub/teacherDetails'),
     },
     {
-      path: '/teacherClub/clubhouseDetails',
-      name: 'clubhouseDetails',
+      path: '/teacher-club/club-house-details',
+      name: 'club-house-details',
       component: () => import('@/pages/teacherClub/clubhouseDetails')
     },
     {
-      path: '/informationdetail/:id',
-      name: 'informationdetail',
+      path: '/information-detail/:id',
+      name: 'information-detail',
       component: () => import('@/pages/homepage/inForMationDetail.vue')
     },
     {
-      path: "/knowledgedetail/:id",
-      name: "knowledgedetail",
+      path: "/knowledge-detail/:id",
+      name: "knowledge-detail",
       component: () => import('@/pages/homepage/knowledgeDetail')
     },
     {
@@ -336,19 +336,19 @@ const router = new Router({
       }]
     },
     {
-      path: '/messagedetail/:id',
-      name: 'messagedetail',
+      path: '/message-detail/:id',
+      name: 'message-detail',
       component: () => import('@/pages/informationPage/messageDetail.vue')
     },
     {
       // 课程订单页面
-      path: '/payorder',
-      name: 'payorder',
+      path: '/pay-order',
+      name: 'pay-order',
       component: () => import('@/pages/informationPage/payorder')
     },
     {
-      path: '/fillorder',
-      name: 'fillorder',
+      path: '/fill-order',
+      name: 'fill-order',
       component: () => import('@/pages/market/fillOrder.vue')
     }
   ]

@@ -104,7 +104,7 @@ export default {
       this.$router.go(-1);
     },
     viewdetail (id) {
-      this.$router.push('/informationdetail/' + id)
+      this.$router.push('/information-detail/' + id)
     },
     // li选中变色
     changestyle (id, index) {

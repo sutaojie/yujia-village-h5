@@ -219,22 +219,22 @@ export default {
     gotoPage(type) {
       const path = {
         train: '/yogamessage/list',
-        yagainformation: '/yagainformation',
-        yogaknowledge: '/yogaknowledge',
-        aboutUs: '/aboutUs',
+        yagainformation: '/yaga-information',
+        yogaknowledge: '/yoga-knowledge',
+        aboutUs: '/about-us',
         goods: '/store',
         explain: '/explain'
       }
       path[type] && this.$router.push(path[type])
     },
     viewClub(item) {
-      this.$router.push(`/teacherClub/clubhouseDetails?id=${item.id}`)
+      this.$router.push(`/teacher-club/club-house-details?id=${item.id}`)
     },
     viewTeacher(item) {
-      this.$router.push(`/teacherClub/teacherDetails?id=${item.id}`)
+      this.$router.push(`/teacher-club/teacher-details?id=${item.id}`)
     },
     viewTrain(item) {
-      this.$router.push(`/messagedetail/${item.id}`)
+      this.$router.push(`/message-detail/${item.id}`)
     },
     // 气泡消息数据
     getMsgscroll () {

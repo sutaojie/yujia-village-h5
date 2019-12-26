@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     goback () {
-      this.$router.push('fillorder?type=1')
+      this.$router.push('fill-order?type=1')
     },
     shopback () {
       this.$router.push('/store/category')

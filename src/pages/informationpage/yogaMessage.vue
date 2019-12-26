@@ -208,7 +208,7 @@ export default {
         }
       })
     }
-    if (to.name === 'messagedetail') {
+    if (to.name === 'message-detail') {
       changeKeepAlive('', 'yogamessage list', true)
     } else {
       changeKeepAlive('', 'yogamessage list', false)
@@ -321,7 +321,7 @@ export default {
       let sectionboxScrollTop = this.$refs.sectionbox.scrollTop
       sessionStorage.setItem('scrollTop', sectionboxScrollTop)
 
-      this.$router.push('/messagedetail/'+id)
+      this.$router.push('/message-detail/'+id)
       return false;
     },
     // 获取列表

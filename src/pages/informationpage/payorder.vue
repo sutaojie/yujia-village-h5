@@ -220,7 +220,7 @@ export default {
         .get("/alipay/wechat/h/test?out_trade_no=" + orderId)
         .then(res => {
           let routeData = this.$router.resolve({
-            path: "payforwx",
+            path: "pay-for-wx",
             query: { htmls: res.mweb_url, body: res.body, id: res.out_trade_no }
           });
           window.open(routeData.href, "_blank");

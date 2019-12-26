@@ -142,7 +142,7 @@ export default {
             this.$router.push("/goods/detail/" + goodsId)
         },
         toCourseDetail(courseId) {
-            this.$router.push("/messagedetail/" + courseId) 
+            this.$router.push("/message-detail/" + courseId) 
         }
         
     }

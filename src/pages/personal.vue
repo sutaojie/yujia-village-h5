@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="cell">
-            <van-cell is-link :border="false" to="/buycourse">
+            <van-cell is-link :border="false" to="/buy-course">
                 <template slot="title">
                     <img class="icon" src="../assets/img/pay-course.png" alt="">
                     <span class="custom-title">课程订单</span>
@@ -81,7 +81,7 @@
                 </template>
             </van-cell>
             <div class="cell-box">
-                <van-cell is-link :border="false" to="/shoppingbag">
+                <van-cell is-link :border="false" to="/shopping-bag">
                     <template slot="title">
                         <img class="icon" src="../assets/img/shopping_bag.png" alt="">
                         <span class="custom-title">购物袋</span>
@@ -94,7 +94,7 @@
                     </template>
                 </van-cell>
             </div>
-            <van-cell is-link :border="false" to="/authenticationcenter">
+            <van-cell is-link :border="false" to="/authentication-center">
                 <template slot="title">
                     <img class="icon" src="../assets/img/certification.png" alt="">
                     <span class="custom-title">认证中心</span>
@@ -113,13 +113,13 @@
                     <div class="hot-line">点击拨打 400-100-7191</div>
                 </a>
             </van-popup>
-            <van-cell is-link :border="false" to="/changephone">
+            <van-cell is-link :border="false" to="/change-phone">
                 <template slot="title">
                     <img class="icon" src="../assets/img/mobile-phone.png" alt="">
                     <span class="custom-title">更改绑定手机</span>
                 </template>
             </van-cell>
-            <!-- <van-cell is-link :border="false" to="/contactway">
+            <!-- <van-cell is-link :border="false" to="/contact-way">
                 <template slot="title">
                     <img class="icon" src="../assets/img/contact-way.png" alt="">
                     <span class="custom-title">设置联系方式</span>
@@ -170,10 +170,10 @@ export default {
         },
         // 个人信息修改
         goInfoEditor() {
-            this.$router.push('/personaldata')
+            this.$router.push('/personal-data')
         },
         message(){
-            this.$router.push('/messagecenter')
+            this.$router.push('/message-center')
         },
         messagecenter(){
             this.$request.get(`/personal/message/mobile/first`).then(res => {
@@ -195,7 +195,7 @@ export default {
             } else if(keyword === 'collect') {
                 this.$router.push('/collect');
             } else {
-                this.$router.push('/thumbteacher');
+                this.$router.push('/thumb-teacher');
             }
         },
         // 跳转积分规则

@@ -213,7 +213,7 @@ export default {
       // 通过路由传参，讲对象转化json格式，防止接收数据的页面刷新白屏
       courseParams = JSON.stringify(courseParams);
       this.$router.push({
-        name: 'payorder',
+        name: 'pay-order',
         query: {
           courseParams
         }

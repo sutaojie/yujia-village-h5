@@ -261,9 +261,9 @@ export default {
       // 广告位
     goAdvertising (mold, relation_id) {
         // goAdvertingApi(mold, relation_id)
-      if(mold === 2) { this.$router.push(`/teacherClub/clubhouseDetails?id=${relation_id}`) }
-      else if(mold === 3) {this.$router.push(`teacherClub/teacherDetails?id=${relation_id}`)}
-      else if(mold === 4) { this.$router.push(`/messagedetail/${relation_id}`) }
+      if(mold === 2) { this.$router.push(`/teacher-club/club-house-details?id=${relation_id}`) }
+      else if(mold === 3) {this.$router.push(`teacher-club/teacher-details?id=${relation_id}`)}
+      else if(mold === 4) { this.$router.push(`/message-detail/${relation_id}`) }
       // else if(mold === 5) { this.$router.push(`/goods/detail/${relation_id}`) }
       else if(mold === 6) { this.$router.push(`/yogamessage/list`) }
       // else if(mold === 7) { 商品分类 }
@@ -471,7 +471,7 @@ export default {
         const { name, identity_auth } = this.info.user;
         if(name){
             if(parseInt(identity_auth) === '未认证') {
-            this.$router.push("/authenticationcenter");
+            this.$router.push("/authentication-center");
             return;
             }
             const obj = {
@@ -656,7 +656,7 @@ export default {
     },
     clubBoxItem(item){
         this.$router.push({
-            path: "/teacherClub/clubhouseDetails",
+            path: "/teacher-club/club-house-details",
             query: {
             id: item.id
             }
@@ -664,7 +664,7 @@ export default {
     },
     exhibition(item){
         this.$router.push({
-            path: "/teacherClub/teacherDetails",
+            path: "/teacher-club/teacher-details",
             query: {
             id: item.id
             }

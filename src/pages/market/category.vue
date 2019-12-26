@@ -282,10 +282,10 @@ export default {
       this.$router.go(-1);
     },
     goShopBag() {
-      this.$router.push('/shoppingbag');
+      this.$router.push('/shopping-bag');
     },
     goSearch() {
-      this.$router.push('/searchgoods');
+      this.$router.push('/search-goods');
     },
     // 获取商品分类
     getGoodsClassify() {

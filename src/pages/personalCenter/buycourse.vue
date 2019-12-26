@@ -100,7 +100,7 @@ export default {
         },
         // 跳转详情页
         goCourseDetail(id) {
-            this.$router.push('/messagedetail/'+id);
+            this.$router.push('/message-detail/'+id);
         },
         // 支付
         payMoney(orderId) {

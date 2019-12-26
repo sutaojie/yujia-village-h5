@@ -378,7 +378,7 @@ export default {
     },
     // 查看列表
     handleViewGoods() {
-      this.$router.push("/shoppingbag");
+      this.$router.push("/shopping-bag");
     },
     // 点击立即购买
     handleBuyGoods() {
@@ -409,7 +409,7 @@ export default {
         is_repeat_dis
       };
       sessionStorage.setItem("buy goods", JSON.stringify(params));
-      this.$router.push(`/fillorder?type=1`);
+      this.$router.push(`/fill-order?type=1`);
     },
     // 商品规格框，确定加入购物车 
     onBuyClicked(val) {

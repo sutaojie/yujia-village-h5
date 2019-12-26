@@ -56,7 +56,7 @@ export default {
     },
     onClickLeft() {
       // this.$router.back()
-      this.$router.replace('/yogaknowledge')
+      this.$router.replace('/yoga-knowledge')
 
     },
     yujiamation () {

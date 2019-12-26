@@ -60,7 +60,7 @@ export default {
         },
         addressCompile(id) {
             this.$router.push({
-                name: 'addresscompile',
+                name: 'address-compile',
                 query: { 
                     keyword: '编辑地址',
                     id: id
@@ -70,7 +70,7 @@ export default {
         },
         addAddress() {
             this.$router.push({
-                name: 'addresscompile',
+                name: 'address-compile',
                 query: { keyword: '新增地址' }
             })
         }

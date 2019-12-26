@@ -152,7 +152,7 @@ export default {
         // 跳转 -> 老师详情页
         goTeacherDetail(id) {
             this.$router.push({
-                name: 'teacherDetails',
+                name: 'teacher-details',
                 query: {
                     id: id
                 }
@@ -160,7 +160,7 @@ export default {
         },
         // 
         goClubDetail(id) {
-            this.$router.push('/teacherClub/clubhouseDetails?id='+id);
+            this.$router.push('/teacher-club/club-house-details?id='+id);
         }
     }
 }

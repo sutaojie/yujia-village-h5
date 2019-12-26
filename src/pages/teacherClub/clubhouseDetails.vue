@@ -133,7 +133,7 @@ export default {
   },
   beforeRouteLeave  (to, from, next) {
     if(to.path === this.$route.path || to.path == '') {
-        this.$router.replace('/teacherClub/list');
+        this.$router.replace('/teacher-club/list');
     }
     next()
   },
@@ -209,14 +209,14 @@ export default {
       },
       exhibition(item){
         this.$router.push({
-            path: "/teacherClub/teacherDetails",
+            path: "/teacher-club/teacher-details",
             query: {
             id: item.id
             }
         });
     },
     clubdetail(id){
-        this.$router.push('/messagedetail/'+id);
+        this.$router.push('/message-detail/'+id);
     },
     goback(){
         this.$router.go(-1)

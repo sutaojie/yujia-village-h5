@@ -6,9 +6,9 @@ export function getMainDetail() {
 }
 
 export function goAdvertingApi (mold, relation_id) {
-  if(mold === 2) { vm.$router.push(`/teacherClub/clubhouseDetails?id=${relation_id}`) }
-  else if(mold === 3) {vm.$router.push(`teacherClub/teacherDetails?id=${relation_id}`)}
-  else if(mold === 4) { vm.$router.push(`/messagedetail/${relation_id}`) }
+  if(mold === 2) { vm.$router.push(`/teacher-club/club-house-details?id=${relation_id}`) }
+  else if(mold === 3) {vm.$router.push(`teacher-club/teacher-details?id=${relation_id}`)}
+  else if(mold === 4) { vm.$router.push(`/message-detail/${relation_id}`) }
   // else if(mold === 5) { vm.$router.push(`/goods/detail/${relation_id}`) }
   else if(mold === 6) { vm.$router.push(`/yogamessage/list/?id=${relation_id}`)} // 
   // else if(mold === 7) { 商品分类 }

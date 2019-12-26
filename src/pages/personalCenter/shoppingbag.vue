@@ -83,7 +83,7 @@ export default {
             const id = this.shoppingBagList.filter(item => item.check).map(item => item.id);
             const num = this.shoppingBagList.filter(item => item.check).map(item => item.num);
             postUserOrder({ id, num }).then(data => {
-                this.$router.push('/fillorder')
+                this.$router.push('/fill-order')
             });
 
         },
