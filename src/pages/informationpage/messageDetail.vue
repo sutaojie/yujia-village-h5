@@ -110,7 +110,7 @@
 <script>
 /* eslint-disable no-undef */
 
-import shareIng from '../../components/shareing'
+import shareIng from '@/components/shareing'
 import { getFollowTrain } from '@/services/api/personal'
 import { mapGetters } from "vuex";
 import { Toast } from 'vant';
