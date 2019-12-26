@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <!-- <link rel="icon" href="/static/favicon.ico"> -->
+    <link rel="stylesheet" href="/static/style/iconfont.css">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="瑜伽村">
+    <meta property="og:description" content="瑜伽村网站">
+    <meta property="og:image" content="http://vue.aomengyujia.com/static/favicon.ico">
+    <meta property="og:url" content="http://vue.aomengyujia.com">
+    <meta name="title" content="瑜伽村" />
+    <meta name="description" content="瑜伽村网站" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <!-- <title>瑜伽村</title> -->
+    <!-- <script src="https://cdn.bootcss.com/vConsole/3.2.0/vconsole.min.js"></script> -->
+    <script src="./index.js"></script>
+    <!-- <script src="https://cdn.staticfile.org/vConsole/3.2.0/vconsole.min.js"></script>
+    <script>
+      var vConsole = new VConsole();
+    </script> -->
+  </head>
+  <script>
+    var isProd = '<%= process.env.NODE_ENV %>' === 'production'
+    console.log(isProd);
+    if (isProd) {
+      var _hmt = _hmt || [];
+      (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?37e253bf0a8429a614c7b3ac76807f14";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+      })();
+    }
+  </script>  
+  <body>
+    <noscript>
+      <strong>We're sorry but frontend doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <style>
+      @media screen and (max-width: 750px) {
+  body {
+    --primary:  #F7EFD2;
+    --secondary: #7F583F;
+  }
+}
+    </style>
+    <script>
+console.log('index')       
+      window.onload = function(e) {
+      if (window.screen.width  > 750) {
+        document.documentElement.style.fontSize = '75px'
+      }
+    }
+    </script>
+    <style>
+      #app {
+        overflow: auto;
+      }
+    </style>
+  </body>
+</html>

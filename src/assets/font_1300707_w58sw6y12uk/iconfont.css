@@ -1,0 +1,33 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1563427666858'); /* IE9 */
+  src: url('iconfont.eot?t=1563427666858#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPgAAsAAAAACFwAAAOSAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDMgqDeINRATYCJAMUCwwABCAFhG0HSxtgBxEVnDHJfibYMZTJ0Dbd5ucRkSYS1ATPU171flXSk6m0VvJIC+Jk+QSf6J61OwA253pgoyLUSL5Fj76Qwii9NHuoXuH/uZ+vSx9gXns2l8qwto12BlgBNKCooCbZB/r4nf8wdkFLPAwBDHkpjcQlpDXDwcIcJYD0692zM05GhdUQLzgInoqFFjIXG0dNU1eAOcHPyxsqigMKW2NObNQjvhtRIV/6ED02PJZ2Hgr2dAaALQMNlAYskP6Vpn7oKFQajVF/zyIKMDgoVMgXCoRqpA8JhzXegSTGCoFGqf88xIMZ6wUgCoYtCPkcBBpCAQQKQjUQCKQP4XyYY2wADOADlgD3kKzwlH9modA+XwYJ+ozlicjlNyNu3Gh+/Xqzmzdb3LrVUlKKdi5NZ+X1Fub6zbzScGPfjVuzW8u2FfEt2SH2uO1Fm7kzFo1daMz0xeOWuO09VrZjS6/2taVzV+mkO8GpuHqYf/p20eN2uK6MyzoKc8pt3RnbUGO3dsGVLXtyLT89/WT2ZbvayryM2Tvjy9c1upMaO0o6SEfP2El1TAgdpUNJHRWlk5qZ0yPVpg1qeKbSm7KMFMUvmzKVzcTp+WtHKuj4h+MyRo4T9fFSxjEZj3O1TH9z1tyInBbpberEjY68n/lepsuZr5g1baIeR/FzwjzPVIvh3uHXylsrbzfZ+yu1AJWCdbr4KwYO+yv5s6f5vGrImtVD1GCFHGpIj2yllxwKVGr0pGHBhpN+GP/yqOV+8/1nVtJq4ICWCtPR56RV9zUMBSBMT9bRAOqa+geg16hvEK6b6Tr/fRC67aneHQO1vznu89bcaVG4SeAKsxgecVDQmfWX2R1zLI1rqm1LyXRYitmmUkqFUmsM8G9tGXk4jSRL5wAITobNQBFBHtA4FEZb+NJg41IZPDjUA0MpEpe7ZKI/GrEigZJMAiAE2QMKP2dAE+Qq2sI/AJusvAMPQdFgaCGZNnQpKoJ4ODEqQQv6D9HQ6GytHML4O/qpV5zmBsQ3co5eqIsqH73hiDzFlPzxjYgDxzTAFRyHfU+QmFo0UgSRdCxLV/WiwtAwO3BiVIIW9B+iodF5heVQ+P4d/dQrbsiq0r6Rc2wf6qLqgL6Jxk5Zt9I9f3wj4vAwxzTAFRqwt0IEqbpfi0aKMCCQjiXK57qKiuUlwztuAQzmY2xRosUSWzxshtHow7ROgUbc/ybMIQ6KVoOnnM0AAAA=') format('woff2'),
+  url('iconfont.woff?t=1563427666858') format('woff'),
+  url('iconfont.ttf?t=1563427666858') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1563427666858#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-yonghu:before {
+  content: "\e639";
+}
+
+.icon-phone:before {
+  content: "\e60f";
+}
+
+.icon-xueshimao:before {
+  content: "\e60d";
+}
+
+.icon-mima:before {
+  content: "\e777";
+}
+
