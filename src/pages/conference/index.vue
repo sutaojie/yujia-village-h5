@@ -10,39 +10,19 @@
         <ul class="message-main-head">
           <li :class="{ changeweight: isActive == '0' }">找到以下结果</li>
           <li
-            @click="defaultRank('default')"
-            :class="{ changeweight: isActive == '1' }"
+            @click="changeFilter('courseTime')"
+            :class="{ changeweight: courseTime.isActive }"
           >
-            默认排序
+            开课时间
+            <van-icon name="arrow-up" v-show="courseTime.rise" />
+            <van-icon name="arrow-down" v-show="!courseTime.rise" />
           </li>
-          <li
-            @click="hostRank('host')"
-            :class="{ changeweight: isActive == '2' }"
-          >
-            热度
-          </li>
-          <li
-            @click="priceRank('price')"
-            :class="{ changeweight: isActive == '3' }"
-          >
-            价格
-            <!-- <span> -->
-            <van-icon name="arrow-up" v-show="priceFlag" />
-            <van-icon name="arrow-down" v-show="!priceFlag" />
-            <!-- </span> -->
-          </li>
-          <li class="head-list" is-link @click="isShow = true">筛选</li>
-          <!-- <li>价格 ∨</li> -->
+          <li class="head-list" is-link @click="isShowFilter = true">筛选</li>
         </ul>
       </div>
-      <div class="shade-layer" v-show="isShow" @click="isShow = false">
+      <div class="shade-layer" v-show="isShowFilter" @click="isShowFilter = false">
         <div class="right-box" @click.stop="">
           <div class="popup">
-            <p>理想价格</p>
-            <div class="popup-price">
-              <input type="number" v-model="minprice" placeholder="0" /> —
-              <input type="number" v-model="maxprice" placeholder="50000" />
-            </div>
             <div class="popup-time">
               <p>开课时间</p>
               <div class="choose-time">
@@ -57,44 +37,6 @@
                 <div is-link class="time-select" @click="showPopup('endTime')">
                   {{ selectTime.endTime || "请选择" }}
                 </div>
-              </div>
-            </div>
-            <div class="popup-diff">
-              <p>难度</p>
-              <div style="width = 100%">
-                <!-- <van-rate v-model='stardiff' color='#58B708' void-icon="star" void-color="#eee" :count="5" touchable/> -->
-                <ul class="diff">
-                  <li
-                    :class="{ diffbg: stardiff == 1 }"
-                    @click="changediff('1')"
-                  >
-                    1级
-                  </li>
-                  <li
-                    :class="{ diffbg: stardiff == 2 }"
-                    @click="changediff('2')"
-                  >
-                    2级
-                  </li>
-                  <li
-                    :class="{ diffbg: stardiff == 3 }"
-                    @click="changediff('3')"
-                  >
-                    3级
-                  </li>
-                  <li
-                    :class="{ diffbg: stardiff == 4 }"
-                    @click="changediff('4')"
-                  >
-                    4级
-                  </li>
-                  <li
-                    :class="{ diffbg: stardiff == 5 }"
-                    @click="changediff('5')"
-                  >
-                    5级
-                  </li>
-                </ul>
               </div>
             </div>
             <div class="area">
@@ -113,23 +55,10 @@
                 </div>
               </div>
             </div>
-            <div class="types">
-              <p>适用类别</p>
-              <ul class="types-container">
-                <li
-                  v-for="(list, index) in classfly"
-                  :key="list.id"
-                  @click="selected2(list, index)"
-                  :class="{ bgcolor: spanIndex2.indexOf(index) > -1 }"
-                >
-                  {{ list.name }}
-                </li>
-              </ul>
-            </div>
           </div>
           <div class="button">
             <div class="reset" @click="resetlist">重置</div>
-            <div class="sure" @click="searchResult('confirm')">确定</div>
+            <div class="sure" @click="searchResult">确定</div>
           </div>
         </div>
       </div>
@@ -191,7 +120,10 @@
             </div>
           </div>
         </div>
-        <div v-show="messageLists.length === 0" class="defaultpage">
+        <div v-if="isListEnd" class="" style="text-align: center;color: #999999;font-size:16px;">
+          <span>--我也是有底线的--</span>
+        </div>
+        <div v-show="list.length === 0" class="defaultpage">
           <img src="../../../static/img/defaultpage.png" />
           <span>没有发现哦(╯▽╰)</span>
         </div>
@@ -207,22 +139,24 @@ import { mapGetters } from "vuex";
 import { goAdvertingApi } from "@/services/api/main";
 import { PullRefresh, Toast } from "vant";
 Vue.use(PullRefresh);
+let isScroll = false;
 
-import { getFollowTrain } from "@/services/api/personal";
 export default {
   data() {
     return {
       banner: "",
       list: [],
+      isListEnd: false,
       meta: {
         page: 1,
         pagesize: 6
       },
-      /***** */
-      areaList,
-      messageLists: [],
-      classfly: [],
-      isActive: "1",
+      // 排序关键字
+      kindsOfIdentity: "",
+      courseTime: {
+        isActive: false,
+        rise: false
+      },
       selectArea: {
         province: "",
         city: "",
@@ -241,39 +175,14 @@ export default {
       isShowPopup: false,
       timeOpen: false,
       areaisOpen: false,
+      areaList,
+      isActive: "1",
       // 筛选确定的状态字符
-      confirm: "",
-      minprice: "",
-      maxprice: "",
-      selectTags: [],
-      selectTtype: [],
-      spanIndex2: [],
-      page: 1,
-      pages: 1,
-      stardiff: "",
-      isLoading: false,
-      isShow: false,
-      fruit: {
-        data: []
-      },
-      fruitclasslist: [],
-      newList: [],
-      // 排序关键字
-      keyWord: "",
-      // 控制价格排序的 flag
-      priceFlag: 1,
-      categoryIndex: -1,
-      swiper: false, // 广告位1
-      advertis2: {}, // 广告位2
-      advertis3: {} // // 广告位2
+      isShowFilter: false
     };
   },
   computed: {
     ...mapGetters(["info", "isUserNeedLogin"])
-  },
-  created() {
-    this.messagetypeList();
-    this.getAdvertising();
   },
   activated() {
     this.$refs.sectionbox.scrollTop = sessionStorage.getItem("scrollTop");
@@ -300,40 +209,30 @@ export default {
   },
   mounted() {
     this.getConference();
-    /******* */
-    setTimeout(() => {
-      if (this.isUserNeedLogin) {
-        this.messageList();
-      } else {
-        this.loginMessageList();
-      }
-    }, 200);
     this.PullUpReload();
   },
   methods: {
     getConference(page = 1) {
-      this.$request(`/yoga/conference?${this.$qs.stringify({ page })}`).then(
-        response => {
-          const { all: item, banner } = response;
-          this.list = [...this.list, ...item.data];
-          this.meta.page = item.current_page;
-          this.banner = banner;
-        }
-      );
+      return this.$request(
+        `/yoga/conference?${this.$qs.stringify({ page })}`
+      ).then(response => {
+        const { all: item, banner } = response;
+        this.list = [...this.list, ...item.data];
+        this.meta.page = item.current_page;
+        this.banner = banner;
+        return item.data;
+      });
+    },
+    changeFilter(name) {
+      if (this[name].isActive) {
+        this[name].rise = !this[name].rise
+      }
+      isScroll = false
+      this[name].isActive = true
+      this.postFilterQuery(this.getFilterQueryParams())
     },
     /***** */
 
-    // 广告位
-    goAdvertising(mold, relation_id) {
-      goAdvertingApi(mold, relation_id);
-    },
-    getAdvertising() {
-      return this.$request.get("/advertisement/data/" + 2).then(res => {
-        if (res[0]) {
-          this.swiper = res[0].advertisement[0];
-        }
-      });
-    },
     // 地址遮罩层
     showPopup(word) {
       this.isShowPopup = true;
@@ -346,26 +245,19 @@ export default {
         this.word = word;
       }
     },
-    // 选择难度
-    changediff(num) {
-      this.stardiff = num;
-    },
-    messagetypeList() {
-      this.$request.get("trains/type").then(res => {
-        this.classfly = res.course_types;
-      });
-    },
+
     // 重置按钮功能
     resetlist() {
+      this.isShowFilter = false
+      this.courseTime.isActive = false
       this.selectArea.province = "";
       this.selectArea.city = "";
       this.selectArea.area = "";
-      this.stardiff = ""; // 难度,整数,小于10
-      this.selectTtype = [];
-      this.spanIndex2 = [];
-      this.minprice = "";
-      this.maxprice = "";
-      (this.selectTime.startTime = ""), (this.selectTime.endTime = "");
+      this.selectTime.startTime = "";
+      this.selectTime.endTime = "";
+      isScroll = false
+      this.list = []
+      this.getConference();
     },
     selectDate(value) {
       const date = this.changDate(value);
@@ -392,24 +284,7 @@ export default {
         city: value[1] ? value[1].name : "",
         area: value[2] ? value[2].name : ""
       };
-      const tag = {
-        val: {
-          province: value[0].name,
-          city: value[1] ? value[1].name : "",
-          area: value[2] ? value[2].name : ""
-        },
-        type: "area",
-        isArray: false,
-        name: `${this.selectArea.province} ${this.selectArea.city} ${this.selectArea.area}`
-      };
       this.isShowPopup = false;
-      tag.val.length > 1 && this.selectedarea(tag);
-    },
-    selectedarea(item) {
-      if (item.isArray) {
-        this.selectTags.push(item.val);
-        return;
-      }
     },
     // 点击li跳转到详情页
     viewDetail(id) {
@@ -417,311 +292,78 @@ export default {
       sessionStorage.setItem("scrollTop", sectionboxScrollTop);
 
       this.$router.push(`/conference/${id}`);
-      return false;
     },
-    // 获取列表
-    messageList(page = 1) {
-      if (this.$route.query.id) {
-        this.classfly.map((item, index) => {
-          if (item.id == this.$route.query.id) {
-            this.spanIndex2.push(index);
-          }
-        });
-        this.selectTtype.push(Number(this.$route.query.id));
-        this.searchResult("confirm");
-      } else {
-        this.$request.post("trains?page=" + page, { time: false }).then(res => {
-          this.fenye(this.pages, res);
-        });
-      }
-    },
-    //登陆成功之后 获取列表
-    loginMessageList(page = 1) {
-      if (this.$route.query.id) {
-        this.classfly.map((item, index) => {
-          if (item.id == this.$route.query.id) {
-            this.spanIndex2.push(index);
-          }
-        });
-        this.selectTtype.push(Number(this.$route.query.id));
-        this.searchResult("confirm");
-      } else {
-        this.$request
-          .get("/trains/index/login?page=" + page, { time: false })
-          .then(res => {
-            this.fenye(this.pages, res);
-          });
-      }
-    },
-    fenye(page, res) {
-      if (page <= res.last_page) {
-        res.data.map(item => {
-          item.startTime = item.startTime.replace(/-/g, ".");
-          item.endTime = item.endTime.replace(/-/g, ".");
-          this.messageLists.push(item);
-        });
-        window.sessionStorage.setItem(
-          "message",
-          JSON.stringify(this.messageLists)
-        );
-      } else {
-        Toast("只有这么多了");
-      }
-    },
-    cancelStudy(id, index) {
-      this.wantStudy(id).then(() => {
-        this.$set(this.messageLists, index, {
-          ...this.messageLists[index],
-          is_prais: 0
-        });
-      });
-    },
-    // 我想学的操作
-    study(id, index) {
-      if (!JSON.parse(sessionStorage.getItem("user"))) {
-        this.$router.push("/login");
-        Toast("请登录");
-        return;
-      }
-      this.wantStudy(id).then(() => {
-        this.$set(this.messageLists, index, {
-          ...this.messageLists[index],
-          is_prais: 1
-        });
-      });
-      return false;
-    },
-    wantStudy(id) {
-      // 调用我想学接口
-      return getFollowTrain(id).then(data => {
-        const { status } = data;
-        if (parseInt(status) === 1) {
-          Toast("已添加至我的收藏");
-        }
-        if (parseInt(status) === 0) {
-          Toast("取消成功");
-        }
-      });
-    },
+
     // 下拉刷新
     // 上拉加载更多
     PullUpReload() {
-      var _this = this;
-      var isScroll = false; // 函数截流
-      console.log(document.querySelector("#scrollContent"))
+      isScroll = false; // 函数截流
+
       document.querySelector("#scrollContent").onscroll = () => {
         if (isScroll) return;
-        
-        let innerHeight = document.querySelector("#scrollContent")
-          .clientHeight; // 容器高度
-        let outerHeight = document.querySelector("#scrollContent")
-          .scrollHeight; // 容器高+滚动高
-        let scrollTop = document.querySelector("#scrollContent")
-          .scrollTop; // 滚动高
-          console.log(innerHeight, outerHeight, scrollTop)
+
+        let innerHeight = document.querySelector("#scrollContent").clientHeight; // 容器高度
+        let outerHeight = document.querySelector("#scrollContent").scrollHeight; // 容器高+滚动高
+        let scrollTop = document.querySelector("#scrollContent").scrollTop; // 滚动高
+
         if (900 + scrollTop >= outerHeight) {
-          isScroll = true
+          isScroll = true;
+          let isSearch = false
+          for (const item of Object.values(this.getFilterQueryParams())) {
+            if(item !== '') {
+              isSearch = true
+            }
+          }
+          if (isSearch) {
+            this.postFilterQuery({ ...this.getFilterQueryParams(), page: this.meta.page + 1 })
+              .then(item => {
+                if (item.length > 0) {
+                  setTimeout(() => {
+                    isScroll = false;
+                  }, 300);
+                } else {
+                  this.isListEnd = true;
+                  Toast("只有这么多了");
+                }
+              });
+            return;
+          }
           this.getConference(this.meta.page + 1)
-          setTimeout(() => {
-            isScroll = false;
-          }, 800);
+            .then(item => {
+              if (item.length > 0) {
+                setTimeout(() => {
+                  isScroll = false;
+                }, 300);
+              } else {
+                this.isListEnd = true;
+                Toast("只有这么多了");
+              }
+            });
         }
       };
-    },
-
-    // 选择功能
-    selected2(item, index) {
-      let selectTag = this.selectTtype.indexOf(item.id);
-      if (this.selectTtype.indexOf(item.id) > -1) {
-        this.selectTtype.splice(selectTag, 1);
-      } else {
-        this.selectTtype.push(item.id);
-      }
-
-      let arrIndex2 = this.spanIndex2.indexOf(index);
-      if (this.spanIndex2.indexOf(index) > -1) {
-        this.spanIndex2.splice(arrIndex2, 1);
-      } else {
-        this.spanIndex2.push(index);
-      }
     },
     // 条件筛选功能
-    searchResult(confirm, page = 1) {
-      this.confirm = confirm;
-      this.pages = 1;
-      this.messageLists = [];
-      var word = this.keyWord;
-      this.keyWord = "";
-      this.getConditiondata(page, this.getRankParams(word));
+    searchResult() {
+      this.meta.page = 1;
+      this.list = [];
+      this.isListEnd = false;
+      isScroll = false
+      this.postFilterQuery(this.getFilterQueryParams())
     },
-    // 获取条件筛选的数据
-    getConditiondata(page = 1, params) {
-      if (this.isUserNeedLogin) {
-        this.conditionQuery(page, params);
-      } else {
-        this.loginConditionQuery(page, params);
-      }
+    getFilterQueryParams() {
+      if (this.courseTime.isActive) {
+        return {...this.selectArea, ...this.selectTime, time: this.courseTime.rise}
+      } 
+      return {...this.selectArea, ...this.selectTime}
     },
-    getFiltersParams(params = {}) {
-      params = {
-        startTime: this.selectTime.startTime,
-        endTime: this.selectTime.endTime,
-        minPrice: parseInt(this.minprice),
-        maxPrice: parseInt(this.maxprice),
-        province: this.selectArea.province || "",
-        city: this.selectArea.city || "",
-        area: this.selectArea.area || "",
-        diff: this.stardiff, // 难度,整数,小于10
-        course_type_id: this.selectTtype || []
-      };
-      return params;
-    },
-    // 排序请求
-    getRank(page, params) {
-      if (this.isUserNeedLogin) {
-        this.conditionQuery(page, params);
-      } else {
-        this.loginConditionQuery(page, params);
-      }
-    },
-    // 课程筛选
-    conditionQuery(page, params) {
-      this.$request
-        .post("/trains?page=" + page, params)
-        .then(res => {
-          if (res) {
-            this.fenye(page, res);
-            this.isShow = false;
-            if (this.keyWord === "") {
-              this.isActive = "0";
-            }
-          }
-        })
-        .catch(error => {
-          if (
-            error.code == 422 &&
-            error.msg === "max price 字段是必须的当 min price 是存在的"
-          ) {
-            Toast("请输入最大价格");
-          } else if (
-            error.code == 422 &&
-            error.msg === "min price 字段是必须的当 max price 是存在的"
-          ) {
-            Toast("请输入最低价格");
-          } else if (
-            error.code == 422 &&
-            error.msg === "end time 字段是必须的当 start time 是存在的"
-          ) {
-            Toast("请输入截止时间");
-          } else if (
-            error.code == 422 &&
-            error.msg === "start time 字段是必须的当 end time 是存在的"
-          ) {
-            Toast("请输入起始时间");
-          } else if (
-            error.code == 422 &&
-            error.msg === "end time 必须是 start time 之后的一个日期"
-          ) {
-            Toast("时间选择有误，请重新选择");
-          }
-          // 处理筛选失败时，数据为空的情况
-          this.messageLists = JSON.parse(
-            window.sessionStorage.getItem("message")
-          );
-        });
-    },
-    // 课程筛选
-    loginConditionQuery(page, params) {
-      this.$request
-        .post("/trains/store/login?page=" + page, params)
-        .then(res => {
-          if (res) {
-            this.fenye(page, res);
-            this.isShow = false;
-            if (this.keyWord === "") {
-              this.isActive = "0";
-            }
-          }
-        })
-        .catch(error => {
-          if (
-            error.code == 422 &&
-            error.msg === "max price 字段是必须的当 min price 是存在的"
-          ) {
-            Toast("请输入最大价格");
-          } else if (
-            error.code == 422 &&
-            error.msg === "min price 字段是必须的当 max price 是存在的"
-          ) {
-            Toast("请输入最低价格");
-          } else if (
-            error.code == 422 &&
-            error.msg === "end time 字段是必须的当 start time 是存在的"
-          ) {
-            Toast("请输入截止时间");
-          } else if (
-            error.code == 422 &&
-            error.msg === "start time 字段是必须的当 end time 是存在的"
-          ) {
-            Toast("请输入起始时间");
-          } else if (
-            error.code == 422 &&
-            error.msg === "end time 必须是 start time 之后的一个日期"
-          ) {
-            Toast("时间选择有误，请重新选择");
-          }
-          // 处理筛选失败时，数据为空的情况
-          this.messageLists = JSON.parse(
-            window.sessionStorage.getItem("message")
-          );
-        });
-    },
-    // 排序传递的参数
-    getRankParams(keyWord, params = {}) {
-      params = this.getFiltersParams();
-      if (keyWord === "host") {
-        params = Object.assign({}, params, { follow: false });
-      } else if (keyWord === "default") {
-        params = Object.assign({}, params, { time: false });
-      } else if (keyWord === "price") {
-        if (this.priceFlag) {
-          params = Object.assign({}, params, { money: true });
-        } else {
-          params = Object.assign({}, params, { money: false });
-        }
-      } else {
-        return params;
-      }
-      return params;
-    },
-    // 价格排序
-    priceRank(keyWord, page = 1) {
-      this.isActive = "3";
-      this.keyWord = keyWord;
-      this.pages = 1;
-      this.messageLists = [];
-      if (this.priceFlag === 1) {
-        this.priceFlag = true;
-      } else {
-        this.priceFlag = !this.priceFlag;
-      }
-      this.getRank(page, this.getRankParams(keyWord));
-    },
-    // 默认排序
-    defaultRank(keyWord, page = 1) {
-      this.isActive = "1";
-      this.keyWord = keyWord;
-      this.pages = 1;
-      this.messageLists = [];
-      this.getRank(page, this.getRankParams(keyWord));
-    },
-    // 热度排序
-    hostRank(keyWord, page = 1) {
-      this.isActive = "2";
-      this.keyWord = keyWord;
-      this.pages = 1;
-      this.messageLists = [];
-      this.getRank(page, this.getRankParams(keyWord));
+    postFilterQuery(params) {
+      return this.$request.post(`/yoga/conference`, params)
+              .then(response => {
+                const item = response
+                this.list = [...this.list, ...item.data];
+                this.meta.page = item.current_page;
+                return item.data
+              })
     }
   }
 };
@@ -791,7 +433,7 @@ export default {
         .van-icon {
           position: absolute;
           top: 12px;
-          left: 25px;
+          right: -25px;
           font-size: 20px;
         }
       }
@@ -940,7 +582,7 @@ export default {
 
     &-container {
       flex: 1;
-      height:calc(100vh);
+      height: calc(100vh);
       padding-top: 40px;
       // overflow: auto;
       overflow-x: hidden;
