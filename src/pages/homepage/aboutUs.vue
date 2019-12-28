@@ -123,7 +123,7 @@ export default {
     }
 }
 </script>
-<style lang="scss" scope>
+<style lang="scss" scoped>
 .aboutUs{
     .van-nav-bar {
         position: fixed;

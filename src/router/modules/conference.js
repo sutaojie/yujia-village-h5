@@ -1,11 +1,24 @@
+const PageLayout = resolve => require(["@/pages/layout"], resolve); //首页
+
 const conference = [
   {
 		path: '/conference',
-		name: 'conference list',
-		meta: {
-			keepAlive: true
-		},
-		component: () => import('@/pages/conference/index.vue')
+    redirect: '/conference/list',
+    component: PageLayout,
+    meta: {
+      header_name: 'conference',
+    },
+    children: [
+      {
+        path: '/conference/list',
+        name: 'conference list',
+        meta: {
+          header_name: 'conference',
+          keepAlive: true
+        },
+        component: () => import('@/pages/conference/index.vue')
+      }
+    ]
   },
   {
 		path: '/conference/:id',

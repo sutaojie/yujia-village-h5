@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 引导注册登录 -->
-    <van-overlay :show="registerBox.show && isUserNeedLogin">
+    <van-overlay :show="registerBox.show && isUserNeedLogin && isNotificationEndTime('2019-12-31')">
       <div class="register-box">
         <div class="register">
           <div class="register_btn" @click="() => { this.$router.push('/login?q_type=register')}"></div>
@@ -192,6 +192,9 @@ export default {
   },
   computed: {
   ...mapGetters(["info", "isUserNeedLogin"]),
+    isNotificationEndTime () {
+      return (time) => this.$moment().isBefore(time)
+    }
   },
   mounted() {
     this.getMsgscroll()

@@ -20,7 +20,7 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-import Footer from "../components/footer";
+import Footer from "@/components/footer";
 import Main from "./main";
 export default {
     name: 'home',

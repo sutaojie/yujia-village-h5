@@ -369,7 +369,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 // 切换的样式
 .bgcolor {
   background: #7bbb62;

@@ -19,6 +19,7 @@
     "jsonp": "^0.2.1",
     "lrz": "^4.9.40",
     "mockjs": "^1.0.1-beta3",
+    "moment": "^2.24.0",
     "pdfh5": "^1.2.15",
     "qrcodejs2": "0.0.2",
     "querystringify": "^2.1.1",
