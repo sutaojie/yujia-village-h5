@@ -33,7 +33,7 @@ module.exports = {
     }
   },
   // 打包输出目录
-  outputDir: '../../dist/wap',
+  outputDir: process.env.NODE_ENV === 'production' ? '/wap' : '/dev-wap',
   publicPath: './',
   assetsDir: './',
 }
