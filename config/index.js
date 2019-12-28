@@ -47,10 +47,10 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(__dirname, process.env.NODE_ENV === 'production' ? '../wap/index.html' : '../dev-wap/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsRoot: path.resolve(__dirname, process.env.NODE_ENV === 'production' ? '../wap' : '../dev-wap'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 
